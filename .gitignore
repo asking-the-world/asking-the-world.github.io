@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+tmp/
+.private-assets/
+.local/
+.env
+.env.*
+*.log
