@@ -275,6 +275,11 @@ h1 { max-width: 59rem; font-size: clamp(2rem, 3.5vw, 3rem); }
 .project-link { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1.25rem; border: 1px solid var(--color-blue); border-radius: 0.25rem; background: var(--color-blue-soft); color: var(--color-blue); font-family: var(--font-mono); font-size: 0.875rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 0 rgba(16,42,58,0.15); }
 .project-link:hover { background: var(--color-surface); }
 .project-link img { width: 1rem; height: 1.125rem; }
+.project-link-soon { position: relative; cursor: default; }
+.resource-tooltip { position: absolute; bottom: calc(100% + 0.625rem); left: 50%; transform: translateX(-50%); padding: 0.5rem 0.75rem; border-radius: 0.25rem; background: var(--color-ink); color: var(--color-surface); font-size: 0.875rem; font-weight: 400; white-space: nowrap; visibility: hidden; opacity: 0; pointer-events: none; }
+.project-link-soon:hover .resource-tooltip,
+.project-link-soon:focus-visible .resource-tooltip { visibility: visible; opacity: 1; }
+
 .coming-soon { padding: clamp(3rem, 8vw, 6rem) 1rem; text-align: center; }
 .coming-soon h2 { margin: 0 0 1rem; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 600; }
 .coming-soon p { margin: 0; color: var(--color-muted); font-size: 1rem; }
