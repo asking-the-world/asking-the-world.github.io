@@ -276,7 +276,7 @@ h1 { max-width: 59rem; font-size: clamp(2rem, 3.5vw, 3rem); }
 .project-link:hover { background: var(--color-surface); }
 .project-link img { width: 1rem; height: 1.125rem; }
 .project-link-soon { position: relative; cursor: default; }
-.resource-tooltip { position: absolute; bottom: calc(100% + 0.625rem); left: 50%; transform: translateX(-50%); padding: 0.5rem 0.75rem; border-radius: 0.25rem; background: var(--color-ink); color: var(--color-surface); font-size: 0.875rem; font-weight: 400; white-space: nowrap; visibility: hidden; opacity: 0; pointer-events: none; }
+.resource-tooltip { position: absolute; top: calc(100% + 0.625rem); left: 50%; transform: translateX(-50%); padding: 0.5rem 0.75rem; border-radius: 0.25rem; background: var(--color-ink); color: var(--color-surface); font-size: 0.875rem; font-weight: 400; white-space: nowrap; visibility: hidden; opacity: 0; pointer-events: none; }
 .project-link-soon:hover .resource-tooltip,
 .project-link-soon:focus-visible .resource-tooltip { visibility: visible; opacity: 1; }
 
