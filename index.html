@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Asking the World: Generalist Physical Reasoning through Agentic World Modeling and Probing. Project page coming soon.">
-    <meta name="theme-color" content="#fcfcfb">
+    <meta name="description" content="Asking the World: Generalist Physical Reasoning through Agentic World Modeling and Probing. Benchmark results on CLEVRER and ContPhy.">
+    <meta name="theme-color" content="#fafbfc">
     <title>Asking the World: Generalist Physical Reasoning through Agentic World Modeling and Probing</title>
     <link rel="canonical" href="https://asking-the-world.github.io/">
     <link rel="icon" href="public/assets/favicon.png" type="image/png" sizes="64x64">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;650;700;750;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;650;700;750;800&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/styles/main.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="Asking the World home"><img class="wordmark-logo" src="public/assets/favicon.png" width="32" height="32" alt="">Asking the World</a>
-      <span class="header-status">Coming Soon</span>
+      <nav class="header-nav" aria-label="Page sections"><a href="#overview">Overview</a><a href="#results">Results</a><a href="#ablations">Ablations</a></nav>
     </header>
     <main id="main-content">
       <section class="hero section-shell" id="top" aria-labelledby="page-title">
@@ -35,18 +35,190 @@
           <p class="author-notes"><span>* Equal contribution</span><span>† Corresponding authors</span></p>
         </div>
         <nav class="project-links" aria-label="Project resources">
-          <a class="project-link project-link-primary" href="https://arxiv.org/pdf/2609.39135" target="_blank" rel="noopener noreferrer"><img src="public/assets/icons/paper.svg" alt="" aria-hidden="true">Paper</a>
+          <a class="project-link" href="https://arxiv.org/pdf/2609.39135" target="_blank" rel="noopener noreferrer"><img src="public/assets/icons/paper.svg" alt="" aria-hidden="true">Paper</a>
           <a class="project-link" href="https://arxiv.org/abs/2609.39135" target="_blank" rel="noopener noreferrer"><img src="public/assets/icons/arxiv.svg" alt="" aria-hidden="true">arXiv</a>
           <a class="project-link" href="https://github.com/zengsx23/Asking-the-World/tree/main" target="_blank" rel="noopener noreferrer">
             <img src="public/assets/icons/github.svg" alt="" aria-hidden="true">Code
           </a>
         </nav>
       </section>
-      <section class="coming-soon section-shell" aria-labelledby="coming-soon-title">
-        <h2 id="coming-soon-title">Coming Soon</h2>
-        <p>More details, demos, and code are on the way.</p>
+      <div class="teaser section-shell">
+        <figure class="paper-figure">
+          <a class="figure-image" href="public/assets/figures/teaser.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size teaser figure">
+            <img src="public/assets/figures/teaser.png" width="2600" height="1245" alt="ATW builds and probes executable worlds from video observations and questions across rigid-body, fluid, and cloth scenes." fetchpriority="high">
+          </a>
+        </figure>
+      </div>
+      <section class="abstract section-shell" id="abstract" aria-labelledby="abstract-title">
+        <h2 id="abstract-title">Abstract</h2>
+        <div class="abstract-copy">
+          <p class="abstract-lead">Physical reasoning requires inferring latent properties and dynamics beyond direct observation.</p>
+          <p><strong>Asking the World (ATW)</strong> constructs and interrogates task-relevant executable worlds through adaptive <strong>World Modeling</strong> and <strong>World Probing</strong>, determining how to model and probe according to the scene and question.</p>
+          <p><strong>PolyWorld Engine</strong> supports <strong>diverse materials</strong> and <strong>coupled interactions</strong>, while system identification recovers task-relevant dynamics. The resulting world becomes an active workspace for question-directed physical experiments, enabling execution-grounded generalist physical reasoning.</p>
+          <details class="abstract-details">
+            <summary>Read the full abstract <span aria-hidden="true">+</span></summary>
+            <p>Physical reasoning from video requires inferring latent physical properties and dynamics beyond direct observation. Direct VLM inference remains unreliable on complex physical tasks without explicit modeling and validation, while predefined tool pipelines rely on task- and domain-specific priors that limit generalization across materials, dynamics, and reasoning tasks. We introduce Asking the World (ATW), a generalist agent that constructs and interrogates task-relevant executable worlds through two adaptive stages: World Modeling calibrates a world from video, while World Probing queries, simulates, and intervenes on it to obtain question-relevant evidence. Rather than prescribing the operations in either stage, ATW determines how to model and probe according to the scene and question. We develop PolyWorld Engine, a lightweight and highly programmable Warp-based multiphysics simulator for constructing and probing worlds with rigid bodies, soft bodies, cloth, ropes, fluids, and their coupled interactions. CEM-based system identification recovers task-relevant dynamics during World Modeling. The resulting world becomes an active workspace for question-directed physical experiments rather than a predetermined downstream tool. We evaluate ATW on CLEVRER, ContPhy, and three real-world scenarios. Using Gemini-3-Flash as its base VLM, ATW achieves 80.82% overall per-question accuracy on CLEVRER, improving direct Gemini-3-Flash by 46.50 points, GPT-5.5 by 13.58 points, and PhysMind by 8.27 points. On ContPhy, it reaches 70.56% overall accuracy, surpassing Gemini-3-Flash by 28.10 points and GPT-5.5 by 3.53 points. Across the three real-world scenarios, ATW achieves 71.67% accuracy, 28.33 points above GPT-5.5. These results establish agentic world modeling and probing as an effective, execution-grounded approach to generalist physical reasoning.</p>
+          </details>
+        </div>
+      </section>
+      <section class="world-demos section-shell" id="world-demos" aria-labelledby="world-demos-title">
+        <div class="section-heading"><h2 id="world-demos-title">Asking the World in Action</h2></div>
+        <div class="scene-tabs" role="tablist" aria-label="Physical scenes">
+          <button type="button" role="tab" id="scene-rigid" aria-selected="true" aria-controls="scene-player" data-scene="clevrer_10040">Rigid bodies</button>
+          <button type="button" role="tab" id="scene-soft" aria-selected="false" aria-controls="scene-player" tabindex="-1" data-scene="softbody_350">Soft bodies</button>
+          <button type="button" role="tab" id="scene-cloth" aria-selected="false" aria-controls="scene-player" tabindex="-1" data-scene="cloth_399">Cloth</button>
+          <button type="button" role="tab" id="scene-rope" aria-selected="false" aria-controls="scene-player" tabindex="-1" data-scene="rope_364">Ropes</button>
+          <button type="button" role="tab" id="scene-fluid" aria-selected="false" aria-controls="scene-player" tabindex="-1" data-scene="fluid_384">Fluids</button>
+        </div>
+        <div id="scene-player" role="tabpanel" aria-labelledby="scene-rigid" tabindex="0" data-phase="loading">
+          <div class="scene-stage">
+            <div class="scene-track">
+              <figure class="scene-card scene-observations"><figcaption>Video Observations</figcaption><video id="scene-original" muted playsinline preload="metadata" aria-label="Video observations"></video></figure>
+              <figure class="scene-card scene-world"><figcaption>Executable World</figcaption><video id="scene-swr" muted playsinline preload="metadata" aria-label="Executable world replay"></video></figure>
+              <figure class="scene-card scene-probe" aria-hidden="true"><figcaption>World Probing</figcaption><video id="scene-probe" muted playsinline preload="metadata" aria-label="World probing video"></video></figure>
+            </div>
+          </div>
+          <div class="scene-controls"><p id="scene-status" role="status" aria-live="polite">Loading scene…</p><div><button type="button" id="scene-toggle">Pause</button><button type="button" id="scene-replay">Replay</button></div></div>
+          <p class="scene-offset" hidden>Cloth: executable-world replay starts at frame 75 of the video observations.</p>
+        </div>
+      </section>
+      <section class="overview section-shell" id="overview" aria-labelledby="overview-title">
+        <div class="section-heading"><h2 id="overview-title">Overview of ATW</h2></div>
+        <p class="method-summary">ATW constructs and interrogates task-relevant executable worlds through two adaptive stages: World Modeling and World Probing.</p>
+        <figure class="paper-figure">
+          <a class="figure-image" href="public/assets/figures/overview.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size ATW system overview">
+            <img src="public/assets/figures/overview.png" width="2600" height="936" alt="A billiards counterfactual: World Modeling corrects a missing mask, tracks poses, and fits dynamics; World Probing removes the brown ball and queries collision events to answer the question." loading="lazy">
+          </a>
+        </figure>
+        <div class="method-notes">
+          <article><h3>World Modeling</h3><p>Selects question-relevant entities, recovers geometry and motion, and fits physical parameters. Feedback revises object bindings and physical representations before the agent commits an executable world.</p></article>
+          <article><h3>World Probing</h3><p>Queries properties, simulates trajectories, and tests interventions in the committed world. Execution feedback refines subsequent probes without reopening World Modeling or altering the base world.</p></article>
+        </div>
+      </section>
+      <section class="results section-shell" id="results" aria-labelledby="results-title">
+        <div class="section-heading"><h2 id="results-title">Main Results</h2></div>
+        <article class="result-block" id="clevrer" aria-labelledby="clevrer-title">
+          <div class="result-intro"><div><h3 id="clevrer-title">CLEVRER</h3></div><p class="result-score"><strong>80.82<span>%</span></strong><span>Overall per-question accuracy</span></p></div>
+          <p class="table-context" id="clevrer-table-label"><span>CLEVRER · 1,000 validation videos · Accuracy (%)</span><span class="table-scroll-hint" aria-hidden="true" hidden>Scroll ↔</span></p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="CLEVRER results, horizontally scrollable"><table aria-labelledby="clevrer-table-label"><colgroup><col class="method-column"><col span="8"></colgroup><thead><tr><th rowspan="2" scope="col">Method</th><th colspan="2" scope="colgroup">Explanatory</th><th colspan="2" scope="colgroup">Predictive</th><th colspan="2" scope="colgroup">Counterfactual</th><th colspan="2" scope="colgroup">Overall</th></tr>
+              <tr><th scope="col">per ques.</th><th scope="col">per opt.</th><th scope="col">per ques.</th><th scope="col">per opt.</th><th scope="col">per ques.</th><th scope="col">per opt.</th><th scope="col">per ques.</th><th scope="col">per opt.</th></tr></thead>
+            <tbody><tr class="table-group"><th colspan="9" scope="rowgroup">Baselines</th></tr>
+              <tr><th scope="row">Random</th><td>7.19</td><td>49.33</td><td>25.40</td><td>49.71</td><td>9.75</td><td>50.02</td><td>11.26</td><td>49.69</td></tr>
+              <tr><th scope="row">Blind Gemini-3-Flash</th><td>27.00</td><td>64.64</td><td>24.68</td><td>48.92</td><td>10.07</td><td>50.13</td><td>19.21</td><td>56.31</td></tr></tbody>
+            <tbody><tr class="table-group"><th colspan="9" scope="rowgroup">Foundation VLMs</th></tr>
+              <tr><th scope="row">Qwen3-VL-235B-A22B</th><td>53.19</td><td>75.84</td><td>40.40</td><td>62.12</td><td>22.17</td><td>61.79</td><td>37.52</td><td>67.92</td></tr>
+              <tr><th scope="row">GLM-4.6V</th><td>39.33</td><td>73.75</td><td>63.64</td><td>66.74</td><td>24.31</td><td>58.70</td><td>36.68</td><td>66.02</td></tr>
+              <tr><th scope="row">Gemini-3-Flash</th><td>50.32</td><td>74.66</td><td>42.71</td><td>53.46</td><td>16.63</td><td>58.38</td><td>34.32</td><td>64.97</td></tr>
+              <tr><th scope="row">Gemini-3.1-Pro</th><td>60.90</td><td>79.17</td><td>61.76</td><td>71.28</td><td>25.37</td><td>63.50</td><td>45.47</td><td>71.06</td></tr>
+              <tr><th scope="row">GPT-4o</th><td>36.76</td><td>70.48</td><td>35.64</td><td>54.98</td><td>15.57</td><td>56.54</td><td>27.29</td><td>62.44</td></tr>
+              <tr><th scope="row">GPT-5.5</th><td><u>77.21</u></td><td><u>89.55</u></td><td><u>85.71</u></td><td><u>90.69</u></td><td>51.33</td><td>76.74</td><td>67.24</td><td>83.66</td></tr></tbody>
+            <tbody><tr class="table-group"><th colspan="9" scope="rowgroup">Training-Based Methods</th></tr>
+              <tr><th scope="row">VideoRFT</th><td>16.66</td><td>61.98</td><td>39.25</td><td>47.40</td><td>15.35</td><td>54.98</td><td>19.74</td><td>57.28</td></tr>
+              <tr><th scope="row">Video-R1</th><td>32.79</td><td>71.14</td><td>41.56</td><td>46.25</td><td>19.62</td><td>59.10</td><td>28.43</td><td>63.08</td></tr>
+              <tr><th scope="row">VideoThinker-R1</th><td>17.53</td><td>63.60</td><td>41.56</td><td>42.50</td><td>15.14</td><td>53.71</td><td>20.37</td><td>56.92</td></tr>
+              <tr><th scope="row">Chain-of-Frames</th><td>44.71</td><td>77.26</td><td>84.42</td><td>87.88</td><td>33.48</td><td>70.84</td><td>46.21</td><td>75.29</td></tr></tbody>
+            <tbody><tr class="table-group"><th colspan="9" scope="rowgroup">Training-Free Methods</th></tr>
+              <tr><th scope="row">VideoAgent</th><td>34.42</td><td>61.55</td><td>14.29</td><td>48.56</td><td>7.57</td><td>51.61</td><td>19.39</td><td>55.63</td></tr>
+              <tr><th scope="row">STAR</th><td>55.58</td><td>78.62</td><td>24.24</td><td>57.14</td><td>7.57</td><td>53.47</td><td>29.46</td><td>64.75</td></tr>
+              <tr><th scope="row">PhysMind</th><td>76.97</td><td>87.38</td><td>66.96</td><td>82.32</td><td><u>70.58</u></td><td><u>88.08</u></td><td><u>72.55</u></td><td><u>87.22</u></td></tr>
+              <tr class="ours"><th scope="row">ATW (Ours)</th><td><strong>83.87</strong></td><td><strong>92.31</strong></td><td><strong>88.60</strong></td><td><strong>91.41</strong></td><td><strong>75.16</strong></td><td><strong>90.29</strong></td><td><strong>80.82</strong></td><td><strong>91.28</strong></td></tr></tbody></table></div>
+        </article>
+        <article class="result-block" id="contphy" aria-labelledby="contphy-title">
+          <div class="result-intro"><div><h3 id="contphy-title">ContPhy</h3></div><p class="result-score"><strong>70.56<span>%</span></strong><span>Overall accuracy</span></p></div>
+          <figure class="reasoning-figure"><a href="public/assets/figures/adaptive-reasoning.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size stage-local feedback and correction figure"><img src="public/assets/figures/adaptive-reasoning.png" width="2400" height="561" alt="World Modeling replaces a rigid-body hypothesis with a soft-body model after observing deformation. World Probing corrects an intervention to target the intended cyan wall." loading="lazy"></a></figure>
+          <p class="table-context" id="contphy-table-label"><span>ContPhy · 600 videos · 1,950 questions · Accuracy (%)</span><span class="table-scroll-hint" aria-hidden="true" hidden>Scroll ↔</span></p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="ContPhy results, horizontally scrollable"><table aria-labelledby="contphy-table-label"><colgroup><col class="method-column"><col span="5"></colgroup><thead><tr><th scope="col">Method</th><th scope="col">Property</th><th scope="col">Predictive</th><th scope="col">Counterfactual</th><th scope="col">Goal-driven</th><th scope="col">Overall</th></tr></thead>
+            <tbody><tr class="table-group"><th colspan="6" scope="rowgroup">Baselines</th></tr>
+              <tr><th scope="row">Random</th><td>40.53</td><td>31.50</td><td>12.92</td><td>13.90</td><td>28.36</td></tr>
+              <tr><th scope="row">Blind Gemini-3-Flash</th><td>47.47</td><td>41.26</td><td>23.16</td><td>29.34</td><td>37.90</td></tr></tbody>
+            <tbody><tr class="table-group"><th colspan="6" scope="rowgroup">Foundation VLMs</th></tr>
+              <tr><th scope="row">Qwen3-VL-235B-A22B</th><td>58.80</td><td>46.54</td><td>30.51</td><td>27.41</td><td>45.03</td></tr>
+              <tr><th scope="row">Gemini-3-Flash</th><td>60.00</td><td>43.90</td><td>23.16</td><td>22.39</td><td>42.46</td></tr>
+              <tr><th scope="row">GPT-5.5</th><td><u>75.47</u></td><td><u>50.81</u></td><td><strong>69.49</strong></td><td><strong>69.11</strong></td><td><u>67.03</u></td></tr></tbody>
+            <tbody><tr class="table-group"><th colspan="6" scope="rowgroup">Training-Based Methods</th></tr>
+              <tr><th scope="row">Video-R1-7B</th><td>43.47</td><td>34.15</td><td>11.14</td><td>15.44</td><td>29.95</td></tr>
+              <tr><th scope="row">Chain-of-Frames-8B</th><td>50.27</td><td>48.17</td><td>10.24</td><td>20.85</td><td>36.62</td></tr></tbody>
+            <tbody><tr class="table-group"><th colspan="6" scope="rowgroup">Training-Free Methods</th></tr>
+              <tr class="ours"><th scope="row">ATW (Ours)</th><td><strong>81.73</strong></td><td><strong>62.20</strong></td><td><u>63.03</u></td><td><u>67.18</u></td><td><strong>70.56</strong></td></tr></tbody></table></div>
+        </article>
+        <article class="result-block real-world" id="real-world" aria-labelledby="real-world-title">
+          <div class="result-intro"><h3 id="real-world-title">Real-world</h3></div>
+        <div class="real-tabs" role="tablist" aria-label="Real-world scenarios">
+          <button type="button" id="real-billiards" role="tab" aria-selected="true" aria-controls="real-panel" data-case="billiards">Billiards</button>
+          <button type="button" id="real-car" role="tab" aria-selected="false" aria-controls="real-panel" tabindex="-1" data-case="car">Toy car</button>
+          <button type="button" id="real-ball" role="tab" aria-selected="false" aria-controls="real-panel" tabindex="-1" data-case="ball">Bouncing ball</button>
+        </div>
+        <div class="real-layout" id="real-panel" role="tabpanel" aria-labelledby="real-billiards" tabindex="0">
+          <div class="real-media">
+          <div class="real-papers" aria-label="Billiards videos">
+            <figure class="real-paper"><figcaption>Video Observations</figcaption><video id="real-original-video" muted playsinline preload="metadata" aria-label="Video observations"></video></figure>
+            <figure class="real-paper"><figcaption>Executable World</figcaption><video id="real-swr-video" muted playsinline preload="metadata" aria-label="Executable world replay"></video></figure>
+          </div>
+          <div class="real-video-controls"><span id="real-video-status" role="status">Loading videos…</span><button id="real-video-toggle" type="button">Pause</button></div>
+          </div>
+          <div class="real-chart" aria-label="Billiards per-question accuracy">
+            <h4 id="real-task">Counterfactual reasoning</h4>
+            <p class="real-metric">Per-question accuracy (%)</p>
+            <div class="real-chart-row"><div><span>Gemini-3-Flash</span><span class="real-value">20.00%</span></div><div class="real-bar-track" aria-hidden="true"><i style="width:20%"></i></div></div>
+            <div class="real-chart-row"><div><span>GPT-5.5</span><span class="real-value">35.00%</span></div><div class="real-bar-track" aria-hidden="true"><i style="width:35%"></i></div></div>
+            <div class="real-chart-row real-ours"><div><span>ATW (Ours)</span><span class="real-value">85.00%</span></div><div class="real-bar-track" aria-hidden="true"><i style="width:85%"></i></div></div>
+          </div>
+        </div>
+        </article>
+      </section>
+      <section class="ablations section-shell" id="ablations" aria-labelledby="ablations-title">
+        <div class="section-heading"><h2 id="ablations-title">Ablation Studies</h2></div>
+        <div class="ablation-tabs" role="tablist" aria-label="Ablation studies">
+          <button id="tab-reasoning" role="tab" aria-selected="true" aria-controls="panel-reasoning" type="button">Agentic world reasoning</button>
+          <button id="tab-grounding" role="tab" aria-selected="false" aria-controls="panel-grounding" tabindex="-1" type="button">System identification &amp; physical backends</button>
+          <button id="tab-backbones" role="tab" aria-selected="false" aria-controls="panel-backbones" tabindex="-1" type="button">Generalization across models</button>
+        </div>
+        <div class="ablation-stage">
+          <section class="ablation-panel" id="panel-reasoning" role="tabpanel" aria-labelledby="tab-reasoning" tabindex="0">
+            <div class="ablation-intro"><h3>Executable worlds and adaptive reasoning</h3><p>Executable worlds provide substantial gains. Feedback-guided revision adds 6.90 points on CLEVRER and 8.92 on ContPhy over Single-pass World Model.</p></div>
+            <a class="figure-image" href="public/assets/figures/agentic-reasoning-ablation.png" target="_blank" rel="noopener noreferrer" aria-label="Open agentic world reasoning ablation figure"><img src="public/assets/figures/agentic-reasoning-ablation.png" width="2600" height="863" alt="Per-question accuracy for Video-only VLM, Perception-only, Single-pass World Model, and Full ATW. Overall CLEVRER: 35.40, 42.07, 75.40, 82.30 percent. Overall ContPhy: 47.08, 51.38, 59.08, 68.00 percent." loading="lazy"></a>
+            <p class="ablation-context">Gemini-3-Flash · CLEVRER and ContPhy ablation subsets</p>
+          </section>
+          <section class="ablation-panel" id="panel-grounding" role="tabpanel" aria-labelledby="tab-grounding" tabindex="0" hidden>
+            <div class="ablation-intro"><h3>System identification and physical backends</h3><p>Stronger search improves the same simulator; a more suitable backend improves reasoning under the same optimizer. Lower fitting error is associated with stronger downstream reasoning.</p></div>
+            <div class="grounding-comparison">
+              <table class="grounding-table">
+                <thead><tr><th scope="col">Physical configuration</th><th scope="col">Median RMSE (m) ↓</th><th scope="col">Per-question accuracy (%) ↑</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><span>Warp</span><small>Default parameters</small></th><td><span class="grounding-number">0.292053</span><span class="grounding-track error" aria-hidden="true"><i style="width:97.351000%"></i></span></td><td><span class="grounding-number">26.67</span><span class="grounding-track" aria-hidden="true"><i style="width:26.67%"></i></span></td></tr>
+                  <tr><th scope="row"><span>Warp</span><small>Random Search</small></th><td><span class="grounding-number">0.034992</span><span class="grounding-track error" aria-hidden="true"><i style="width:11.664000%"></i></span></td><td><span class="grounding-number">43.45</span><span class="grounding-track" aria-hidden="true"><i style="width:43.45%"></i></span></td></tr>
+                  <tr><th scope="row"><span>PhysMind model</span><small>CEM</small></th><td><span class="grounding-number">0.059138</span><span class="grounding-track error" aria-hidden="true"><i style="width:19.712667%"></i></span></td><td><span class="grounding-number">53.56</span><span class="grounding-track" aria-hidden="true"><i style="width:53.56%"></i></span></td></tr>
+                  <tr><th scope="row"><span>MuJoCo</span><small>CEM</small></th><td><span class="grounding-number">0.016017</span><span class="grounding-track error" aria-hidden="true"><i style="width:5.339000%"></i></span></td><td><span class="grounding-number">73.79</span><span class="grounding-track" aria-hidden="true"><i style="width:73.79%"></i></span></td></tr>
+                  <tr class="ours"><th scope="row"><span>Warp + CEM (Ours)</span></th><td><span class="grounding-number">0.007655</span><span class="grounding-track error" aria-hidden="true"><i style="width:2.551667%"></i></span></td><td><span class="grounding-number">82.76</span><span class="grounding-track" aria-hidden="true"><i style="width:82.76%"></i></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="ablation-context">CLEVRER ablation subset · CEM and Random Search use equal simulation budgets.</p>
+          </section>
+          <section class="ablation-panel" id="panel-backbones" role="tabpanel" aria-labelledby="tab-backbones" tabindex="0" hidden>
+            <div class="ablation-intro"><h3>Generalization across foundation models</h3><p>ATW improves over Video-only VLM with both evaluated backbones on CLEVRER and ContPhy.</p></div>
+            <div class="backbone-legend"><span><i></i>Video-only VLM</span><span><i></i>ATW</span><span>Per-question accuracy (%)</span></div>
+            <div class="backbone-grid" id="backbone-comparisons"></div>
+            <p class="ablation-context">CLEVRER and ContPhy ablation subsets · Gains in percentage points</p>
+          </section>
+        </div>
+      </section>
+      <section class="citation section-shell" id="citation" aria-labelledby="citation-title">
+        <div class="section-heading"><h2 id="citation-title">BibTeX</h2><div class="copy-control"><span id="copy-status" role="status"></span><button class="copy-button" id="copy-citation" type="button">Copy</button></div></div>
+        <pre tabindex="0" aria-label="BibTeX citation"><code id="bibtex">@misc{zeng2026askingworld,
+  title = {Asking the World: Generalist Physical Reasoning through Agentic World Modeling and Probing},
+  author = {Shenxiang Zeng and Chen Yang and Peiyao Chen and Guohui Zhang and Jiansheng Fan and Chen Wang},
+  year = {2026},
+  eprint = {2609.39135},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CV},
+  url = {https://arxiv.org/abs/2609.39135}
+}</code></pre>
       </section>
     </main>
     <footer class="site-footer">Asking the World · Tsinghua University</footer>
+    <script src="src/scripts/main.js" defer></script>
+    <script src="src/scripts/world-demos.js" defer></script>
+    <script src="src/scripts/real-world.js" defer></script>
   </body>
 </html>
