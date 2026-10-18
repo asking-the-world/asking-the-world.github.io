@@ -105,3 +105,20 @@ reducedMotion.addEventListener('change', () => {
     });
   }
 });
+
+// Keep the poster visible until the visitor explicitly starts the film.
+const teaserVideo = document.getElementById('teaser-video');
+const teaserPlay = document.getElementById('teaser-play');
+teaserVideo.controls = false;
+teaserPlay.hidden = false;
+teaserPlay.addEventListener('click', async () => {
+  teaserVideo.controls = true;
+  try {
+    await teaserVideo.play();
+    teaserPlay.hidden = true;
+    teaserVideo.focus();
+  } catch {
+    // Native controls remain available if playback needs another gesture.
+    teaserPlay.hidden = false;
+  }
+});

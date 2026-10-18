@@ -415,3 +415,13 @@ table u { text-underline-offset: .2em; }
 .table-scroll .method-column { width: 13rem; }
 #clevrer .table-scroll table { min-width: 58rem; }
 #contphy .table-scroll table { min-width: 54rem; }
+
+.teaser-film { position: relative; overflow: hidden; border: 1px solid var(--color-line); border-radius: .5rem; background: #fff; }
+.teaser-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.teaser-play { position: absolute; right: 1rem; bottom: 1rem; display: flex; align-items: center; gap: .625rem; padding: .75rem 1rem; border: 1px solid var(--color-line); border-radius: .5rem; background: #fff; color: var(--color-blue); font: 600 .875rem var(--font-body); cursor: pointer; box-shadow: 0 2px 12px #00000012; text-align: left; }
+.teaser-play[hidden] { display: none; }
+.teaser-play svg { width: 1.75rem; height: 1.75rem; }
+.teaser-play small { display: block; margin-top: .125rem; color: var(--color-muted); font-size: .6875rem; font-weight: 400; }
+@media (max-width: 767px) {
+  .teaser-play { position: static; width: 100%; justify-content: center; border: 0; border-top: 1px solid var(--color-line); border-radius: 0; box-shadow: none; }
+}
