@@ -72,7 +72,6 @@
     panel.setAttribute('aria-labelledby', tab.id);
     if (focus) tab.focus();
     offset = tab.dataset.scene === 'cloth_399' ? 75 / 30 : 0;
-    section.querySelector('.scene-offset').hidden = !offset;
     setPhase('loading');
     try {
       await Promise.all(videos.map((video, index) => {

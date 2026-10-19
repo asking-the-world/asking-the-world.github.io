@@ -366,11 +366,10 @@ table u { text-underline-offset: .2em; }
 .scene-card video { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: contain; background: #eef2f4; border: 1px solid var(--color-line); border-radius: .375rem; }
 #scene-player:is([data-phase="reveal"], [data-phase="probe"], [data-phase="hold"]) .scene-track { transform: translateX(calc(-50% - var(--scene-gap) / 2)); }
 .scene-controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
-.scene-controls p, .scene-offset { margin: 0; color: var(--color-muted); font-size: .75rem; }
+.scene-controls p { margin: 0; color: var(--color-muted); font-size: .75rem; }
 .scene-controls > div { display: flex; gap: .5rem; }
 .scene-controls button { min-width: 4.5rem; min-height: 2.75rem; padding: .5rem .75rem; border: 1px solid var(--color-line); border-radius: .375rem; background: var(--color-surface); color: var(--color-ink); font: 500 .75rem var(--font-body); cursor: pointer; }
 .scene-controls button:hover { color: var(--color-blue); border-color: var(--color-blue); }
-.scene-offset { margin-top: .5rem; }
 @media (max-width: 767px) {
   .scene-tabs button { font-size: .75rem; }
   .scene-stage { --scene-gap: .5rem; }
