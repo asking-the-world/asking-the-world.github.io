@@ -106,19 +106,35 @@ reducedMotion.addEventListener('change', () => {
   }
 });
 
-// Keep the poster visible until the visitor explicitly starts the film.
+// Hold the cover for 1.5 seconds while the film is visible, then start once.
+// Native controls always remain available; manual input takes precedence.
 const teaserVideo = document.getElementById('teaser-video');
-const teaserPlay = document.getElementById('teaser-play');
-teaserVideo.controls = false;
-teaserPlay.hidden = false;
-teaserPlay.addEventListener('click', async () => {
-  teaserVideo.controls = true;
-  try {
-    await teaserVideo.play();
-    teaserPlay.hidden = true;
-    teaserVideo.focus();
-  } catch {
-    // Native controls remain available if playback needs another gesture.
-    teaserPlay.hidden = false;
+let teaserTimer;
+let teaserStarted = false;
+const cancelTeaserStart = () => {
+  clearTimeout(teaserTimer);
+  teaserStarted = true;
+};
+teaserVideo.addEventListener('pointerdown', cancelTeaserStart);
+teaserVideo.addEventListener('keydown', cancelTeaserStart);
+teaserVideo.addEventListener('play', cancelTeaserStart);
+const teaserObserver = new IntersectionObserver(entries => {
+  clearTimeout(teaserTimer);
+  if (!teaserStarted && entries[0].isIntersecting && !document.hidden) {
+    teaserTimer = setTimeout(() => {
+      teaserStarted = true;
+      teaserVideo.muted = true;
+      // If the device blocks autoplay, the visible native play control still works.
+      teaserVideo.play().catch(() => {});
+      teaserObserver.disconnect();
+    }, 1500);
+  }
+}, { threshold: .25 });
+teaserObserver.observe(teaserVideo);
+document.addEventListener('visibilitychange', () => {
+  clearTimeout(teaserTimer);
+  if (!teaserStarted && !document.hidden) {
+    teaserObserver.unobserve(teaserVideo);
+    teaserObserver.observe(teaserVideo);
   }
 });
