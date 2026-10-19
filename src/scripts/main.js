@@ -106,35 +106,21 @@ reducedMotion.addEventListener('change', () => {
   }
 });
 
-// Hold the cover for 1.5 seconds while the film is visible, then start once.
-// Native controls always remain available; manual input takes precedence.
+// A direct user gesture allows the film to start with sound.
 const teaserVideo = document.getElementById('teaser-video');
-let teaserTimer;
-let teaserStarted = false;
-const cancelTeaserStart = () => {
-  clearTimeout(teaserTimer);
-  teaserStarted = true;
-};
-teaserVideo.addEventListener('pointerdown', cancelTeaserStart);
-teaserVideo.addEventListener('keydown', cancelTeaserStart);
-teaserVideo.addEventListener('play', cancelTeaserStart);
-const teaserObserver = new IntersectionObserver(entries => {
-  clearTimeout(teaserTimer);
-  if (!teaserStarted && entries[0].isIntersecting && !document.hidden) {
-    teaserTimer = setTimeout(() => {
-      teaserStarted = true;
-      teaserVideo.muted = true;
-      // If the device blocks autoplay, the visible native play control still works.
-      teaserVideo.play().catch(() => {});
-      teaserObserver.disconnect();
-    }, 1500);
-  }
-}, { threshold: .25 });
-teaserObserver.observe(teaserVideo);
-document.addEventListener('visibilitychange', () => {
-  clearTimeout(teaserTimer);
-  if (!teaserStarted && !document.hidden) {
-    teaserObserver.unobserve(teaserVideo);
-    teaserObserver.observe(teaserVideo);
+const teaserPlay = document.getElementById('teaser-play');
+teaserVideo.controls = false;
+teaserPlay.hidden = false;
+teaserPlay.addEventListener('click', async () => {
+  teaserVideo.muted = false;
+  teaserVideo.controls = true;
+  try {
+    await teaserVideo.play();
+    teaserPlay.hidden = true;
+    teaserVideo.focus();
+  } catch {
+    teaserPlay.hidden = true;
+    // Keep native controls available to retry if loading or playback fails.
+    teaserVideo.focus();
   }
 });
